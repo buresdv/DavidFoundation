@@ -8,7 +8,7 @@
 import Foundation
    
 /// Get arguments passed to the program, without the name of the program itself
-func getTerminalArguments() -> [String] {
+public func getTerminalArguments() -> [String] {
     var arguments: [String] = CommandLine.arguments
     arguments.remove(at: 0)
     
