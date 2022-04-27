@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Takes a string input and saves it into a text file at a given path
 public func writeToFile(newContents: String, atPath path: String) -> Void {
     let filePath: URL = URL(fileURLWithPath: path)
     
