@@ -28,6 +28,8 @@ public enum MessageColors: String {
     case white      = "\u{001B}[0;37m"
     case black      = "\u{001B}[0;30m"
     
+    case inverted   = "\u{001B}[0;47;30m"
+    
     case red        = "\u{001B}[0;31m"
     case green      = "\u{001B}[0;32m"
     case yellow     = "\u{001B}[0;33m"
@@ -46,7 +48,7 @@ public func writeToConsole(message: String, format: TextDecoration, forceNewline
     
     /// If there's a color defined, color the line
     if messageColor != nil {
-        messageTemplate = "\(messageColor!.rawValue) \(messageTemplate)"
+        messageTemplate = "\(messageColor!.rawValue)\(messageTemplate)"
     }
     
     /// See if the user wants there to be any new lines around the message
