@@ -46,9 +46,9 @@ public func writeToConsole(message: String, format: TextDecoration, forceNewline
     /// The default message template that's used no matter what
     var messageTemplate: String = "\(format.rawValue) \(message)"
     
-    /// If there's a color defined, color the line
+    /// If there's a color defined, color the line and reset the color at the end
     if messageColor != nil {
-        messageTemplate = "\(messageColor!.rawValue)\(messageTemplate)"
+        messageTemplate = "\(messageColor!.rawValue)\(messageTemplate)\(MessageColors.reset.rawValue)"
     }
     
     /// See if the user wants there to be any new lines around the message
