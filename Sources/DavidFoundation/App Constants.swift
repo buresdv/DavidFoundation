@@ -8,5 +8,5 @@
 import Foundation
 
 public struct AppConstants {
-    let fileManager = FileManager.default
+    static let fileManager = FileManager.default
 }

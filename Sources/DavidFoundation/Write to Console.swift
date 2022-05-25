@@ -23,12 +23,31 @@ public enum SpacesAroundMessage: String {
     case after
     case no
 }
+/// Message colors
+public enum MessageColors: String {
+    case white      = "\u{001B}[0;37m"
+    case black      = "\u{001B}[0;30m"
+    
+    case red        = "\u{001B}[0;31m"
+    case green      = "\u{001B}[0;32m"
+    case yellow     = "\u{001B}[0;33m"
+    case blue       = "\u{001B}[0;34m"
+    case magenta    = "\u{001B}[0;35m"
+    case cyan       = "\u{001B}[0;36m"
+    
+    case reset      = "\u{001B}[0;0m"
+}
 
 /// The function that writes formatted messages to the console
-public func writeToConsole(message: String, format: TextDecoration, forceNewline: SpacesAroundMessage?) -> Void {
+public func writeToConsole(message: String, format: TextDecoration, forceNewline: SpacesAroundMessage?, messageColor: MessageColors?) -> Void {
     
     /// The default message template that's used no matter what
-    let messageTemplate: String = "\(format.rawValue) \(message)"
+    var messageTemplate: String = "\(format.rawValue) \(message)"
+    
+    /// If there's a color defined, color the line
+    if messageColor != nil {
+        messageTemplate = "\(messageColor!.rawValue) \(messageTemplate)"
+    }
     
     /// See if the user wants there to be any new lines around the message
     if forceNewline == nil || forceNewline == .no {
@@ -41,4 +60,3 @@ public func writeToConsole(message: String, format: TextDecoration, forceNewline
         print("\n")
     }
 }
-
