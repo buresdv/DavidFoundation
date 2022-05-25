@@ -37,7 +37,7 @@ public enum MessageColors: String {
     case magenta    = "\u{001B}[0;35m"
     case cyan       = "\u{001B}[0;36m"
     
-    case reset      = "\u{001B}[0;0m"
+    case reset      = "\u{001B}[0m"
 }
 
 /// The function that writes formatted messages to the console
