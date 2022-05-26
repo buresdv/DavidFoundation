@@ -39,17 +39,30 @@ public enum MessageColors: String {
     
     case reset      = "\u{001B}[0m"
 }
+public enum MessageDecorations: String {
+    case normal = ""
+    case bold   = "\u{001B}[1m"
+    case underline    = "\u{001B}[4m"
+}
 
 /// The function that writes formatted messages to the console
-public func writeToConsole(message: String, format: TextDecoration, forceNewline: SpacesAroundMessage?, messageColor: MessageColors?) -> Void {
+public func writeToConsole(message: String, format: TextDecoration, forceNewline: SpacesAroundMessage?, messageColor: MessageColors?, messageDecoration: MessageDecorations?) -> Void {
     
     /// The default message template that's used no matter what
     var messageTemplate: String = "\(format.rawValue) \(message)"
     
-    /// If there's a color defined, color the line and reset the color at the end
+    /// If there's a color defined, color the line
     if messageColor != nil {
-        messageTemplate = "\(messageColor!.rawValue)\(messageTemplate)\(MessageColors.reset.rawValue)"
+        messageTemplate = "\(messageColor!.rawValue)\(messageTemplate)"
     }
+    
+    /// If there's decorations defined, decorate
+    if messageDecoration != nil {
+        messageTemplate = "\(messageDecoration!.rawValue)\(messageTemplate)"
+    }
+    
+    /// Assemble the final message and reset at the end of the line
+    messageTemplate = "\(messageTemplate)\(MessageColors.reset.rawValue)"
     
     /// See if the user wants there to be any new lines around the message
     if forceNewline == nil || forceNewline == .no {
