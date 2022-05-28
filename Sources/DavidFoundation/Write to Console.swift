@@ -40,13 +40,14 @@ public enum MessageColors: String {
     case reset      = "\u{001B}[0m"
 }
 public enum MessageDecorations: String {
-    case normal = ""
-    case bold   = "\u{001B}[1m"
+    case normal       = ""
+    case bold         = "\u{001B}[1m"
     case underline    = "\u{001B}[4m"
 }
 
 /// The function that writes formatted messages to the console
-public func writeToConsole(message: String, format: TextDecoration, forceNewline: SpacesAroundMessage?, messageColor: MessageColors?, messageDecoration: MessageDecorations?) -> Void {
+/// Has to have those nils so they don't have to be included in the function call
+public func writeToConsole(message: String, format: TextDecoration, forceNewline: SpacesAroundMessage? = nil, messageColor: MessageColors? = nil, messageDecoration: MessageDecorations? = nil) -> Void {
     
     /// The default message template that's used no matter what
     var messageTemplate: String = "\(format.rawValue) \(message)"
@@ -68,10 +69,8 @@ public func writeToConsole(message: String, format: TextDecoration, forceNewline
     if forceNewline == nil || forceNewline == .no {
         print(messageTemplate)
     } else if forceNewline == .before {
-        print("\n")
-        print(messageTemplate)
+        print("\n\(messageTemplate)")
     } else {
-        print(messageTemplate)
-        print("\n")
+        print("\(messageTemplate)\n")
     }
 }
