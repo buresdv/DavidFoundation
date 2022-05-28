@@ -50,7 +50,12 @@ public enum MessageDecorations: String {
 public func writeToConsole(message: String, format: TextDecoration, forceNewline: SpacesAroundMessage? = nil, messageColor: MessageColors? = nil, messageDecoration: MessageDecorations? = nil) -> Void {
     
     /// The default message template that's used no matter what
-    var messageTemplate: String = "\(format.rawValue) \(message)"
+    var messageTemplate: String
+    if format == .none {
+        messageTemplate = "\(message)"
+    } else {
+        messageTemplate = "\(format.rawValue) \(message)"
+    }
     
     /// If there's a color defined, color the line
     if messageColor != nil {
