@@ -7,6 +7,7 @@
 
 import Foundation
 
-func clearTerminal() -> Void {
+/// Clears the console
+public func clearConsole() -> Void {
     print("\u{001B}[2J")
 }
