@@ -7,6 +7,7 @@
 
 import Foundation
 
-public func getIntervalBetweenDates(from: Date, to: Date) -> DateInterval {
+@available(macOS 10.12, *)
+public func getIntervalBetweenDates(from: Date, to: Date) -> TimeInterval {
     return to.timeIntervalSince(from)
 }
