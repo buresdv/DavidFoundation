@@ -1,12 +1,12 @@
 //
 //  File.swift
-//  
+//
 //
 //  Created by David Bureš on 11.02.2023.
 //
 
-import Foundation
 import AppKit
+import Foundation
 
 public extension NSApplication
 {
