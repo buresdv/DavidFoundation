@@ -6,21 +6,21 @@
 //
 
 #if os(macOS)
-import Foundation
-import SwiftUI
+    import Foundation
+    import SwiftUI
 
-extension View
-{
-    @ViewBuilder func `if`<Content: View>(_ condition: Bool, transform: (Self) -> Content) -> some View
+    public extension View
     {
-        if condition
+        @ViewBuilder func `if`<Content: View>(_ condition: Bool, transform: (Self) -> Content) -> some View
         {
-            transform(self)
-        }
-        else
-        {
-            self
+            if condition
+            {
+                transform(self)
+            }
+            else
+            {
+                self
+            }
         }
     }
-}
 #endif

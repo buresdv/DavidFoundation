@@ -6,14 +6,14 @@
 //
 
 #if os(macOS)
-import Foundation
-import SwiftUI
+    import Foundation
+    import SwiftUI
 
-public extension View
-{
-    func modify<T: View>(@ViewBuilder modifier: (Self) -> T) -> T
+    public extension View
     {
-        modifier(self)
+        func modify<T: View>(@ViewBuilder modifier: (Self) -> T) -> T
+        {
+            modifier(self)
+        }
     }
-}
 #endif
