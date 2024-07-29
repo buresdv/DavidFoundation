@@ -6,15 +6,15 @@
 //
 
 #if os(macOS)
-import Foundation
-import SwiftUI
+    import Foundation
+    import SwiftUI
 
-public extension View
-{
-    @ViewBuilder func fillAvailableSpace() -> some View
+    public extension View
     {
-        self
-            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+        @ViewBuilder func fillAvailableSpace() -> some View
+        {
+            self
+                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+        }
     }
-}
 #endif

@@ -6,17 +6,18 @@
 //
 
 #if os(macOS)
-import Foundation
-import SwiftUI
+    import Foundation
+    import SwiftUI
 
-public extension View
-{
-    @ViewBuilder func allAnimationsDisabled() -> some View
+    public extension View
     {
-        self
-            .transaction { transaction in
-                transaction.animation = nil
-            }
+        @ViewBuilder func allAnimationsDisabled() -> some View
+        {
+            self
+                .transaction
+                { transaction in
+                    transaction.animation = nil
+                }
+        }
     }
-}
 #endif
